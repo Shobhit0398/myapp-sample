@@ -32,14 +32,14 @@ jobs:
       - name: Run unit tests
         run: go test ./... -v
 
-      - name: Build docker image
-        run: docker build -t shobhitnagar/myapp:${{ github.sha }} -t shobhitnagar/myapp:latest .
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build docker image
+        run: docker build --pull -t shobhitnagar/myapp:${{ github.sha }} -t shobhitnagar/myapp:latest .
 
       - name: Push image to Docker Hub
         run: |
