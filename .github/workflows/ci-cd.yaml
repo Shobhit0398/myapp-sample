@@ -48,7 +48,7 @@ jobs:
 
       - name: Configure kubeconfig
         run: |
-          echo "${{ secrets.KUBECONFIG_CONTENT }}" | base64 --decode > kubeconfig
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig
           mkdir -p $HOME/.kube
           mv kubeconfig $HOME/.kube/config
           kubectl config use-context minikube || true
