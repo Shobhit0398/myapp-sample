@@ -16,7 +16,7 @@ func main() {
     }
 
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        w.Write([]byte("Hello from myapp!"))
+        w.Write([]byte("Hello from Shobhit!"))
     })
 
     http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
