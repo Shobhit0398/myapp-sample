@@ -46,6 +46,12 @@ jobs:
           docker push shobhitnagar/myapp:${{ github.sha }}
           docker push shobhitnagar/myapp:latest
 
+      - name: Set kubeconfig path
+        run: |
+          export KUBECONFIG=$HOME/.kube/config
+          kubectl config current-context
+
+
       - name: Configure kubeconfig
         run: |
           echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig
